@@ -24,17 +24,24 @@ void DealerHand::AddCard(Card c)
 {
 	if (myTotal == 0) {
 		myUpCard = c;
-		cout << "heeee";
 	}
 	myTotal += c.Value();
+	// cout << "Dealer got " << c.Value() << endl;
+	// cout << "Dealer's total: " << myTotal << endl;
 }
 
 bool DealerHand::CanDraw() const 
 {
+	// cout << "TOTAL FOR DEALER: " << myTotal << endl;
 	if (myTotal <= 16) {
 		return true;
 	}
 	return false;
+}
+
+Card DealerHand::UpCard() 
+{
+	return myUpCard;
 }
 
 CustomerHand::CustomerHand()
@@ -52,6 +59,7 @@ int CustomerHand::Total() const
 void CustomerHand::AddCard(Card c)
 {
 	myTotal += c.Value();
+	// cout << "Customer got " << c.Value() << endl;
 }
 
 bool CustomerHand::CanDraw(Card dealerUpCard) const 

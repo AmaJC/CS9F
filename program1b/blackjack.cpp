@@ -25,6 +25,8 @@ void DealFirstFourCards(DealerHand dealer, CustomerHand cust, Deck d)
     cust.AddCard(third);
     Card fourth = d.Deal();
     dealer.AddCard(fourth);
+    // cout << "After dealing, customer has " << cust.Total();
+    // cout << " and dealer has " << dealer.Total() << endl;
 }
 
 /**
@@ -44,7 +46,38 @@ void DealFirstFourCards(DealerHand dealer, CustomerHand cust, Deck d)
 int ResultOfPlay(DealerHand dealer, CustomerHand cust, Deck d)
 {
     // TODO: You fill this in
-    return 1;
+    //cout << "Customer has total: " << cust.Total() << endl;
+    //cout << "Dealer's up card: " << dealer.UpCard().Value() << endl;
+    while (cust.CanDraw(dealer.UpCard())) {
+        Card newCard = d.Deal();
+        cust.AddCard(newCard);
+        cout << "Customer draws a " << newCard.Value() << endl;
+    } 
+    while (dealer.CanDraw()) {
+        Card newCard = d.Deal();
+        dealer.AddCard(newCard);
+        cout << "Dealer draws a " << newCard.Value() << endl;
+    }
+    if (dealer.Total() == 21) { //dealer blackjack or cust bust
+        cout << "Dealer got a blackjack. Dealer wins. :(";
+        return 0;
+    } else if (cust.Total() > 21) {
+        cout << "Customer bust. Dealer wins.";
+        return 0;
+    } else if (cust.Total() == 21) { //cust blackjack or dealer bust
+        cout << "Customer got a blackjack. You win! :D";
+        return 1;
+    } else if (dealer.Total() > 21) {
+        cout << "Dealer bust. You win!";
+        return 1;
+    } else if (cust.Total() > dealer.Total()) {
+        cout << "Customer value is " << cust.Total() << " and Dealer value is " << dealer.Total() << endl;
+        cout << "You win!" << endl;
+        return 1;
+    }
+    cout << "Customer value is " << cust.Total() << " and Dealer value is " << dealer.Total() << endl;
+    cout << "Dealer wins." << endl;
+    return 0;
 }
 
 int main()
