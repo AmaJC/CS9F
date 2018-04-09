@@ -1,0 +1,5 @@
+list names
+list quantities
+update word 22
+update adifferentword 12903
+quit

@@ -1,0 +1,8 @@
+list hello
+
+list too many arguments
+batch commandsTest.txt too many arguments
+notacommand
+list
+update
+update 1290 word
