@@ -1,14 +1,5 @@
 #include <iostream>
-#include <sstream>
 using namespace std;
-
-/** Returns the string representation of x */
-std::string toString(int x) 
-{
-	std::ostringstream oss;
-	oss << x;
-	return oss.str();
-}
 
 int main()
 {
@@ -20,11 +11,11 @@ int main()
 		subtotal += input;
 		total += input;
 		if (input == 0 and not firstZero) {
-			cout << "Subtotal " + toString(subtotal);
+			cout << "Subtotal " << subtotal << endl;
 			subtotal = 0;
 			firstZero = true;
 		} else if (input == 0 and firstZero) {
-			cout << "Total " + toString(total);
+			cout << "Total " << total << endl;
 			return 0;
 		} else {
 			firstZero = false;
