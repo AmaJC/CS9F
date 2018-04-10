@@ -15,5 +15,11 @@ public:
 
 private:
 	// TODO: You provide this.
-	vector<struct> stock;
+    int numItems;
+	struct itemBox {
+		string entry;
+		int value;
+	};
+	vector<itemBox> sortedByName;
+	vector<itemBox> sortedByQuantity;
 };
